@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +13,319 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* --------------------------------- */
+/* Home Screen : Start */
+/* --------------------------------- */
+
+.home-screen {
+  margin: 20px;
+}
+
+.home-screen .sides .side {
+  border: 1px solid rgb(238, 238, 238);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* .home-screen .sides .side {
+  height: calc(100vh - 120px);
+} */
+
+/* --------------------------------- */
+/* Home Screen : End */
+/* --------------------------------- */
+
+
+/* --------------------------------- */
+/* Join Screen : Start */
+/* --------------------------------- */
+
+.join-quiz {
+  height: 350px;
+  width: 70%;
+  box-shadow: 0 5px 2px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.join-quiz h2 {
+  font-size: 25px;
+  color: #111;
+  font-weight: bold;
+}
+
+.join-quiz span {
+  max-width: 350px;
+  color: #555;
+}
+
+/* --------------------------------- */
+/* Join Screen : End */
+/* --------------------------------- */
+
+
+/* --------------------------------- */
+/* Quiz Screen : Start */
+/* --------------------------------- */
+
+.quiz-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.quiz-screen .question {
+  width: 70%;
+  box-shadow: 0 5px 2px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.quiz-screen .question .progress-bar {
+  width: 0%;
+  height: 5px;
+}
+
+.quiz-screen .question .progress-bar.active {
+  /* width: 100%;
+  background-color: rgb(2, 252, 114); */
+  animation: progress 25s linear;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+    background-color: #555;
+  }
+
+  20% {
+    width: 20%;
+    background-color: rgb(85, 85, 85)
+  }
+
+  40% {
+    width: 40%;
+    background-color: rgb(112, 163, 92)
+  }
+
+  60% {
+    width: 60%;
+    background-color: rgb(148, 240, 111)
+  }
+
+  79% {
+    width: 79%;
+    background-color: rgb(115, 250, 62)
+  }
+
+  80% {
+    width: 80%;
+    background-color: orangered
+  }
+
+  100% {
+    width: 100%;
+    background-color: orangered
+  }
+}
+
+.quiz-screen .question .question-count {
+  font-size: 15px;
+  color: #555;
+}
+
+.quiz-screen .question .main .title {
+  font-size: 15px;
+  color: #555;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: start;
+}
+
+
+.quiz-screen .question .main .title .mainHeading {
+  color: #111;
+  margin-top: 5px;
+}
+
+.quiz-screen .question .options {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.quiz-screen .question button.option {
+  width: calc(50% - 20px);
+  justify-content: start;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  padding: 0 40px;
+}
+
+/* --------------------------------- */
+/* Quiz Screen : End */
+/* --------------------------------- */
+
+
+/* --------------------------------- */
+/* Report Screen : Start */
+/* --------------------------------- */
+
+.result-screen {
+  box-shadow: 0 5px 2px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  width: 70%;
+}
+
+.result-screen .result-summary {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.result-screen .result-summary h2 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Result Questions */
+
+.result-screen .result-questions {
+  height: 350px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.result-screen .result-questions::-webkit-scrollbar {
+  width: 4px;
+}
+
+.result-screen .result-questions::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.result-screen .result-questions::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+.result-screen .result-questions::-webkit-scrollbar-thumb:hover {
+
+  background: #555;
+}
+
+.result-questions h5 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.result-questions .result-question {
+  border: 1px solid #e6e6e6;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.result-questions .result-question h6 {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.result-questions .result-question h6 .subHeading {
+  color: #111;
+}
+
+.result-questions .result-question h6 .mainHeading {
+  color: #555;
+}
+
+.result-questions .result-question-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 5px;
+  font-size: 13px;
+}
+
+.result-questions .result-question-options .option {
+  font-weight: 600;
+}
+
+.result-questions .result-question-options .option.selectedans {
+  background-color: red;
+  color: white;
+}
+
+.result-questions .result-question-options .option.selectedans.correctans,
+.result-questions .result-question-options .option.correctans {
+  background-color: green;
+  color: white;
+}
+
+
+
+/* --------------------------------- */
+/* Report Screen : End */
+/* --------------------------------- */
+
+
+
+@media only screen and (max-width: 700px) {
+  .quiz-screen .question {
+    width: 100%;
+  }
+
+  .join-quiz {
+    width: 100%;
+    height: auto;
+  }
+
+  .home-screen .sides .side {
+    height: auto;
+  }
+
+  .result-screen {
+    height: auto;
+    width: 100%;
+  }
+
+  .result-screen .result-questions {
+    height: auto;
+    overflow: visible;
+  }
 }
