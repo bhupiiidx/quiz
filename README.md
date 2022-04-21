@@ -1,10 +1,30 @@
-# Getting Started with Create React App
+# Play Two Quiz Simultaneously
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In This web application you can play two quiz simultaneously with PWA enabled
 
-## Available Scripts
+## Feature
+1. PWA enabled Application
+2. React Based Web App
+3. You can set Number of Question, range of random number for arithmetic operation and also you can select operator(+,-,/,*) based on that operator question will be asked
+4. Scoreboard
+5. Result where correct answer and wrong will be shown
 
-In the project directory, you can run:
+## Installation
+1. pull the code using any method (HTTPS,SSH)
+2. Go into the quiz directory
+3. run **npm i** for installing reqd package
+4. finally **npm start**
+
+## Screenshot
+![1](public/assets/images/screenshot/1.png)
+![2](public/assets/images/screenshot/2.png)
+![3](public/assets/images/screenshot/3.png)
+![4](public/assets/images/screenshot/4.png)
+![5](public/assets/images/screenshot/5.png)
+![6](public/assets/images/screenshot/6.png)
+![7](public/assets/images/screenshot/7.png)
+![8](public/assets/images/screenshot/8.png)
+![9](public/assets/images/screenshot/9.png)
 
 ### `npm start`
 
