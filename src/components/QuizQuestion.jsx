@@ -1,23 +1,22 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import React, { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 
 function QuizQuestion({ question, totalQuestion, currentQuestion, setAnswers }) {
-	const [ selectedOption, setSelectedOption ] = useState(null);
+	const [ typedQuesVal, setTypedQuesVal ] = useState('');
 	const timer = useRef(null);
 	const progressBar = useRef(null);
 
 	function goToNextQuestion() {
+		flushSync(() => {
+			console.log('current val is', typedQuesVal);
+			setAnswers(typedQuesVal);
+		});
+
 		if (timer.current) {
 			clearTimeout(timer.current);
 		}
-		flushSync(() => {
-			console.log('current val is', selectedOption);
-			let newVal = selectedOption;
-			setSelectedOption(null);
-			setAnswers(newVal);
-		});
-		// setTimeout(()=> setSelectedOption(null),100)
+		setTypedQuesVal('');
 	}
 
 	useEffect(
@@ -26,7 +25,7 @@ function QuizQuestion({ question, totalQuestion, currentQuestion, setAnswers }) 
 			setTimeout(() => {
 				progressBar.current.classList.add('active');
 			}, 0);
-			timer.current = setTimeout(goToNextQuestion, 25 * 1000);
+			timer.current = setTimeout(goToNextQuestion, 3 * 1000);
 		},
 		[ question ]
 	);
@@ -36,7 +35,9 @@ function QuizQuestion({ question, totalQuestion, currentQuestion, setAnswers }) 
 			<Box className="progress-bar" ref={progressBar} />
 			<Box className="question-count">
 				<Typography variant="span">{currentQuestion}</Typography>
-				<Typography variant="span" style={{margin:'0 2px'}}>of</Typography>
+				<Typography variant="span" style={{ margin: '0 2px' }}>
+					of
+				</Typography>
 				<Typography variant="span">{totalQuestion}</Typography>
 			</Box>
 			<Box className="main">
@@ -50,20 +51,18 @@ function QuizQuestion({ question, totalQuestion, currentQuestion, setAnswers }) 
 				</Box>
 			</Box>
 			<Box className="options">
-				{question.options.map((option, index) => {
-					return (
-						<Button
-							variant={index === selectedOption ? 'contained' : 'outlined'}
-							color={index === selectedOption ? 'success' : 'primary'}
-							key={index}
-							onClick={() => setSelectedOption(index)}
-							className='option'
-							size="small"
-						>
-							<Typography variant="span">{option}</Typography>
-						</Button>
-					);
-				})}
+				<TextField
+					fullWidth
+					id="typedQuesVal"
+					label="Answers"
+					variant="standard"
+					value={typedQuesVal}
+					onChange={(event) => {
+						console.log('event.target.value is=>', event.target.value);
+						setTypedQuesVal(event.target.value);
+					}}
+					helperText="For 0/0 and 1/0 enter 0 and proceed"
+				/>
 			</Box>
 			<Box className="controls">
 				<Button variant="outlined" color="primary" onClick={goToNextQuestion} size="small">

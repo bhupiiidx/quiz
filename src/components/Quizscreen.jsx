@@ -1,36 +1,38 @@
-import React, { useState } from 'react';
-import QuestionList from '../data/quizSample.json';
+import React, { useEffect, useState } from 'react';
+// import genQues from '../data/quizSample.json';
 import QuizQuestion from './QuizQuestion';
 import QuizResult from './QuizResult';
-function Quizscreen({ retry }) {
+function Quizscreen({ whichOne, genQues, retry }) {
 	const [ currentQuestionIndex, setCurrentQuestionIndex ] = useState(0);
-	const [ markedAnswers, setMarkedAnswers ] = useState(new Array(QuestionList.length));
-	const isQuestionEnd = currentQuestionIndex === QuestionList.length;
+	const [ typedAnswers, setTypedAnswers ] = useState(new Array(genQues.length));
+	const isQuestionEnd = currentQuestionIndex === genQues.length;
 	const [ result, setResult ] = useState({});
 
 	function calculateResult() {
 		let correct = 0;
-		QuestionList.forEach((question, index) => {
-			if (question.correctIndex === markedAnswers[index]) {
+		genQues.forEach((question, index) => {
+			console.log('question is =>', question);
+			console.log('question.answer is =>', question.answer);
+			if (question.answer == typedAnswers[index]) {
 				console.log('inside if');
 				correct++;
 			}
 			console.log(
-				'question.correctIndex , markedAnswers[index]',
-				question.correctIndex,
-				markedAnswers[index],
+				'question.answer , typedAnswers[index]',
+				question,
+				typedAnswers[index],
 				' | and correct ',
 				correct
 			);
 		});
 		setResult({
-			total: QuestionList.length,
+			total: genQues.length,
 			correct: correct,
-			incorrect: QuestionList.length - correct,
-			unselected: markedAnswers.filter((f) => f === undefined ||  f === null).length,
-			percentage: Math.trunc(correct / QuestionList.length * 100),
-			selectedAnswers: markedAnswers,
-			allQuestion: QuestionList
+			incorrect: genQues.length - correct,
+			unselected: typedAnswers.filter((f) => f === undefined || f === null).length,
+			percentage: Math.trunc(correct / genQues.length * 100),
+			selectedAnswers: typedAnswers,
+			allQuestion: genQues
 		});
 	}
 
@@ -40,13 +42,13 @@ function Quizscreen({ retry }) {
 				<QuizResult retry={retry} result={result} calculate={calculateResult} />
 			) : (
 				<QuizQuestion
-					question={QuestionList[currentQuestionIndex]}
-					totalQuestion={QuestionList.length}
+					question={genQues[currentQuestionIndex]}
+					totalQuestion={genQues.length}
 					currentQuestion={currentQuestionIndex + 1}
 					setAnswers={(index) => {
 						console.log('current outer index is', index);
 						console.log('current outer currentQuestionIndex is', currentQuestionIndex);
-						setMarkedAnswers((prev) => {
+						setTypedAnswers((prev) => {
 							console.log('current inner index is', index);
 							console.log(
 								'current inner currentQuestionIndex is',
@@ -55,7 +57,7 @@ function Quizscreen({ retry }) {
 								prev
 							);
 							let newArr = [ ...prev ];
-							newArr[currentQuestionIndex] = index
+							newArr[currentQuestionIndex !== 0 ? currentQuestionIndex - 1 : 0] = index;
 							return newArr;
 						});
 						setCurrentQuestionIndex(currentQuestionIndex + 1);

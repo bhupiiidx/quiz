@@ -1,0 +1,26 @@
+[
+    {
+        "id":0,
+        "name":"Addition",
+        "symbol":"+",
+        "status":false
+    },
+    {
+        "id":1,
+        "name":"Subtraction",
+        "symbol":"-",
+        "status":false
+    },
+    {
+        "id":2,
+        "name":"Division",
+        "symbol":"/",
+        "status":false
+    },
+    {
+        "id":3,
+        "name":"Multiplication",
+        "symbol":"*",
+        "status":false
+    }
+]

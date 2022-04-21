@@ -15,17 +15,17 @@ function QuizResult({ retry, result, calculate }) {
 					<span style={{ color: result.percentage > 50 ? 'green' : 'red' }}>{result.percentage}%</span>
 				</Typography>
 				<Typography variant="p">
-					Selected {result.correct} correct option out of {result.total} questions
+					Answered {result.correct} correct option out of {result.total} questions
 				</Typography>
-				<Typography variant="p">Selected Incorrect: {result.incorrect}</Typography>
-				<Typography variant="p">Unselected: {result.unselected}</Typography>
+				<Typography variant="p">Answered Incorrect: {result.incorrect}</Typography>
+				<Typography variant="p">Unanswered: {result.unselected}</Typography>
 				<Box className="controls">
 					<Button variant="contained" color="error" onClick={retry} size="small">
 						Restart
 					</Button>
-					<Button variant="outlined" color="primary" onClick={()=>setViewResult(true)} size="small">
+					{!viewResult && <Button variant="outlined" color="primary" onClick={()=>setViewResult(true)} size="small">
 						View Result
-					</Button>
+					</Button>}
 				</Box>
 			</Box>
 			{viewResult && <ViewResult result={result}/>}

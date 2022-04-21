@@ -6,6 +6,10 @@ function ViewResult({ result }) {
 		<Box sx={{ my: 2 }} className="result-questions">
 			<Typography variant="h5">All Questions and Answers</Typography>
 			{result.allQuestion.map((mapData, mainindex) => {
+				var userSelected = 'option selectedans';
+				if (mapData.answer == result.selectedAnswers[mainindex]) {
+					userSelected = "option selectedans correctans"
+				}
 				return (
 					<Box className="result-question" key={'question-' + mainindex}>
 						<Typography variant="h6">
@@ -16,7 +20,7 @@ function ViewResult({ result }) {
 								{mapData.title}{' '}
 							</Typography>
 						</Typography>
-						<Box className="result-question-options">
+						{/* <Box className="result-question-options">
 							{mapData.options.map((loop, index) => {
 								// option selectedans correctans
 								var userSelected = '';
@@ -47,6 +51,19 @@ function ViewResult({ result }) {
 									</Typography>
 								);
 							})}
+						</Box> */}
+						<Box className="result-question-options">
+							<Typography
+								variant="span"
+								className={userSelected}
+							>
+								Answer:- {result.selectedAnswers[mainindex]}
+							</Typography>
+							<Typography
+								variant="span"
+							>
+								Correct:- {mapData.answer}
+							</Typography>
 						</Box>
 					</Box>
 				);
