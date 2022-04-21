@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "title": "10 + 2",
+        "correctValue" : 12
+    },
+    {
+        "id": 2,
+        "title": "11- 9",
+        "correctValue": 2
+    },
+    {
+        "id": 3,
+        "title": "190 + 40",
+        "correctValue": 230
+    },
+    {
+        "id": 4,
+        "title": "100 / 2",
+        "correctValue": 50
+    },
+    {
+        "id": 5,
+        "title": "34 - 17",
+        "correctValue": 17
+    }
+]
