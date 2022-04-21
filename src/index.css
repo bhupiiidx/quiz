@@ -103,7 +103,7 @@ body {
 .quiz-screen .question .progress-bar.active {
   /* width: 100%;
   background-color: rgb(2, 252, 114); */
-  animation: progress 25s linear;
+  animation: progress 15s linear;
 }
 
 @keyframes progress {

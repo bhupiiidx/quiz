@@ -25,7 +25,7 @@ function QuizQuestion({ question, totalQuestion, currentQuestion, setAnswers }) 
 			setTimeout(() => {
 				progressBar.current.classList.add('active');
 			}, 0);
-			timer.current = setTimeout(goToNextQuestion, 3 * 1000);
+			timer.current = setTimeout(goToNextQuestion, 15 * 1000);
 		},
 		[ question ]
 	);

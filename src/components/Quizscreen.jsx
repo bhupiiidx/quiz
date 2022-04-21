@@ -57,7 +57,7 @@ function Quizscreen({ whichOne, genQues, retry }) {
 								prev
 							);
 							let newArr = [ ...prev ];
-							newArr[currentQuestionIndex !== 0 ? currentQuestionIndex - 1 : 0] = index;
+							newArr[currentQuestionIndex] = index;
 							return newArr;
 						});
 						setCurrentQuestionIndex(currentQuestionIndex + 1);
